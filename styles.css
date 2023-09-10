@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Calc-text';
+    src: url(digital-7.ttf);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    box-sizing: inherit;
+}
+
+.calc-main{
+    background-color: rgb(178, 177, 177);
+    width: 350px;
+    height: 500px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+    border-radius: 10px;
+}
+
+.calc-top{
+    width: 100%;
+    background-color: rgb(39, 38, 38);
+    height: 20%;
+    border-radius: 5px;
+    position: relative;
+}
+
+.calc-result{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: bold;
+    font-family: 'Calc-text', cursive;
+    font-size: 32px;
+    
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
