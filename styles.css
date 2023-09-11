@@ -52,6 +52,12 @@ body{
     bottom: 0;
 }
 
+.calc-buttons{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 10px;
+}
+
 .calc-button{
     color: white;
     background-color: rgb(54, 51, 51);
@@ -75,4 +81,21 @@ body{
 
 .clear-button, .delete-button{
     background-color: orange;
+    color: white;
+    border: none;
+
+    width: 52px;
+    height: 50px;
+
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 1px;
+
+    flex-wrap: wrap;
+
+    border-radius: 50%;
+}
+
+.clear-button:hover, .delete-button:hover{
+    background-color: rgb(212, 162, 70);
 }
