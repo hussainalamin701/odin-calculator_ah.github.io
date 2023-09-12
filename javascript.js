@@ -1,6 +1,31 @@
-let operation = '';
+let currentOperation = '';
+let nextOperation = '';
+let operandOne = '';
+let operandTwo = '';
+let result = '';
+
+function add(a, b){
+    return a + b;
+}
+
+function sub(a, b){
+    return a - b;
+}
+
+function div(a, b){
+    return a / b;
+}
+
+function mul(a, b){
+    return a * b;
+}
+
+function pow(a, b){
+    return Math.pow(a, b);
+}
 
 const calculator_buttons_list = document.querySelectorAll('.calc-button');
+const calculator_operation_buttons_list = document.querySelectorAll('.operation-button');
 
 const calc_buttons = document.getElementById('calc-button');
 const calc_result = document.getElementById('calc-result');
@@ -10,10 +35,48 @@ const calc_delete = document.getElementById('delete-button');
 
 calculator_buttons_list.forEach((ele) => {
     ele.onclick = () => {
-        console.log(ele.innerHTML);
+        if(currentOperation === ''){
+            operandOne += ele.innerHTML;
+        }else if(currentOperation !== 'null' && nextOperation === ''){
+            operandTwo += ele.innerHTML;
+        }
         calc_result.textContent += ele.innerHTML;
+
+        console.log(result);
     }
 });
+
+calculator_operation_buttons_list.forEach((ele) => {
+    ele.onclick = () => {
+        currentOperation = ele.innerHTML;
+        calc_result.textContent += ele.innerHTML;
+
+        console.log(result);
+    }
+});
+
+function operate(op1, op2 , operation){
+    if(operation = '+'){
+        add(op1, op2);
+    }else if(operation = '-'){
+        sub(op1, op2);
+    }else if(operation = '/'){
+        div(op1, op2);
+    }else if(operation = '*'){
+        mul(op1, op2);
+    }
+}
+
+function updateDisplay(){
+
+}
+
+function calculate(){
+    if(currentOperation === ''){
+        console.log('No operation selected so far');
+        result = operandOne;
+    } 
+}
 
 function clearCalculations(){
     calc_result.innerHTML = '';
