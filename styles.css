@@ -113,6 +113,24 @@ body{
     border-radius: 50%;
 }
 
-.clear-button:hover, .delete-button:hover, .operation-button:hover{
+.clear-button:hover, .delete-button:hover, .operation-button:hover, .evaluate-button:hover{
     background-color: rgb(212, 162, 70);
+}
+
+.evaluate-button{
+    background-color: orange;
+    color: white;
+    border: none;
+
+    width: 52px;
+    height: 50px;
+
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 1px;
+
+    flex-wrap: wrap;
+
+    border-radius: 50%;
+    text-align: center;
 }

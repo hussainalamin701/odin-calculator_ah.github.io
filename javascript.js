@@ -41,17 +41,22 @@ calculator_buttons_list.forEach((ele) => {
             operandTwo += ele.innerHTML;
         }
         calc_result.textContent += ele.innerHTML;
-
-        console.log(result);
     }
 });
 
 calculator_operation_buttons_list.forEach((ele) => {
     ele.onclick = () => {
-        currentOperation = ele.innerHTML;
-        calc_result.textContent += ele.innerHTML;
-
-        console.log(result);
+        if(currentOperation === ''){
+            currentOperation = ele.innerHTML;
+            calc_result.textContent += ele.innerHTML;
+            console.log(`Operation 1 : ${currentOperation}`);
+        }else if(currentOperation !== '' && nextOperation === ''){
+            nextOperation = ele.innerHTML;
+            calc_result.textContent += ele.innerHTML;
+            console.log(`Operation 2 : ${nextOperation}`);
+        } else{
+            return;
+        }
     }
 });
 
@@ -74,12 +79,18 @@ function updateDisplay(){
 function calculate(){
     if(currentOperation === ''){
         console.log('No operation selected so far');
-        result = operandOne;
-    } 
+        result += operandOne;
+    }
+    
 }
 
 function clearCalculations(){
     calc_result.innerHTML = '';
+    currentOperation = '';
+    nextOperation = '';
+    operandOne = '';
+    operandTwo = '';
+    result = '';
 }
 
 function deleteCalculations(){
