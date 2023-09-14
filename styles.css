@@ -52,6 +52,19 @@ body{
     bottom: 0;
 }
 
+.calc-result-store{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-weight: bold;
+    font-family: 'Calc-text', cursive;
+    font-size: 20px;
+    
+    position: absolute;
+    right: 0;
+    top: 20%;
+}
+
 .calc-buttons{
     display: grid;
     grid-template-columns: repeat(4,1fr);
