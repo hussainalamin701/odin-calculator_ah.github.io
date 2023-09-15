@@ -19,10 +19,6 @@ function mul(a, b){
     return a * b;
 }
 
-function pow(a, b){
-    return Math.pow(a, b);
-}
-
 const calculator_buttons_list = document.querySelectorAll('.calc-button');
 const calculator_operation_buttons_list = document.querySelectorAll('.operation-button');
 
@@ -71,15 +67,23 @@ function numberPressed(){
 
 function calculate(){
     if(currentOperation === '/' && operandOne === '0'){
+        calc_result.innerHTML = 'UNDEFINED';
+        calc_result_store
         return;
     }
-
     result =  operate(operandOne, operandTwo, currentOperation);
+    
+    operandOne = result;
+    currentOperation = '';
+    operandTwo = '';
+
+    calc_result.innerHTML = operandOne;
+    calc_result_store.innerHTML = result;
 }
 
 function clearCalculations(){
-    calc_result_store.innerHTML = '';
-    calc_result.innerHTML = '';
+    calc_result_store.innerHTML = 'PLACEHOLDER';
+    calc_result.innerHTML = 'PLACEHOLDER';
     currentOperation = '';
     operandOne = '';
     operandTwo = '';
@@ -106,9 +110,12 @@ function operate(op1, op2 , operation){
 }
 
 function deleteCalculations(){
+    if(operandOne === '' && operandTwo === '' && currentOperation === ''){
+        return;
+    }
     calc_result.innerHTML = calc_result.innerHTML.substring(0,calc_result.innerHTML.length-1);
 }
 
 calc_clear.onclick = () => clearCalculations();
 calc_delete.onclick = () => deleteCalculations();
-calc_equals.onclick = () => operate(operandOne, operandTwo, currentOperation);
+calc_equals.onclick = () => calculate(operandOne, operandTwo, currentOperation);
