@@ -35,13 +35,14 @@ calculator_buttons_list.forEach((ele) => {
     ele.onclick = () => {
         if(currentOperation === ''){
             operandOne += ele.innerHTML;
+            console.log("OP 1 : " + operandOne);
         }else{
             operandTwo += ele.innerHTML;
+            console.log("OP 2 : " + operandTwo);
         }
 
         result = operandOne + currentOperation + operandTwo;
-        calc_result.innerHTML = operandOne + currentOperation + operandTwo;
-        console.log(result);
+        calc_result.innerHTML = result;
     }
 });
 
@@ -54,8 +55,7 @@ calculator_operation_buttons_list.forEach((ele) => {
 
             result = operandOne + currentOperation + operandTwo;
             calc_result.innerHTML = '';
-            calc_result_store.innerHTML = operandOne + currentOperation + operandTwo;
-            console.log(result);
+            calc_result_store.innerHTML = result;
         }
     }
 
@@ -66,19 +66,23 @@ function numberPressed(){
 }
 
 function calculate(){
+    if(operandOne === '' && operandTwo === '' && currentOperation === ''){
+        return;
+    }
     if(currentOperation === '/' && operandOne === '0'){
         calc_result.innerHTML = 'UNDEFINED';
         calc_result_store
         return;
     }
+
     result =  operate(operandOne, operandTwo, currentOperation);
+    calc_result.innerHTML = result;
+    calc_result_store.innerHTML = `${operandOne} ${currentOperation} ${operandTwo}`;
     
     operandOne = result;
     currentOperation = '';
     operandTwo = '';
 
-    calc_result.innerHTML = operandOne;
-    calc_result_store.innerHTML = result;
 }
 
 function clearCalculations(){
@@ -110,10 +114,16 @@ function operate(op1, op2 , operation){
 }
 
 function deleteCalculations(){
+    let tmpOpOne = Number(operandOne);
+    let tmpOpTwo = Number(operandTwo);
+    let tmpOp = Number(currentOperation);
+
     if(operandOne === '' && operandTwo === '' && currentOperation === ''){
         return;
+    }else if(operandOne !== '' && operandTwo === '' && currentOperation === ''){
     }
-    calc_result.innerHTML = calc_result.innerHTML.substring(0,calc_result.innerHTML.length-1);
+    calc_result.textContent = calc_result.textContent.substring(0,calc_result.innerHTML.length-1);
+    console.log(calc_result.textContent);
 }
 
 calc_clear.onclick = () => clearCalculations();
